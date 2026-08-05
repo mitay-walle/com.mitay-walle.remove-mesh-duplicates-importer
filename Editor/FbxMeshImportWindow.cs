@@ -21,8 +21,6 @@ namespace Core
         [SerializeField] private TreeViewState<int> _objectTreeViewState;
         private FbxMeshObjectTreeView _objectTreeView;
 
-
-
         internal static void OpenForAsset(UnityEngine.Object model)
         {
             FbxMeshImportWindow window = GetUtilityWindow();
