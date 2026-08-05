@@ -2,7 +2,7 @@
   "name": "com.mitay-walle.remove-mesh-duplicates-importer",
   "version": "1.0.0",
   "displayName": "Remove Mesh Duplicates Importer",
-  "description": "Editor-only Unity package that reuses identical or vertex-rotated FBX meshes during import and provides per-object processing rules.",
+  "description": "Removes identical meshes from a model, replacing them with one original to save disk space and RAM.",
   "unity": "2021.3",
   "keywords": [
     "fbx",
