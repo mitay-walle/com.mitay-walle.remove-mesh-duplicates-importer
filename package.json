@@ -10,6 +10,13 @@
     "model-importer",
     "editor"
   ],
+  "samples": [
+    {
+      "displayName": "100 Identical Cubes",
+      "description": "One FBX containing 128 identical cube meshes with different transforms and materials.",
+      "path": "Samples~/100 Identical Cubes"
+    }
+  ],
   "homepage": "https://github.com/mitay-walle/com.mitay-walle.remove-mesh-duplicates-importer",
   "license": "MIT",
   "author": {
