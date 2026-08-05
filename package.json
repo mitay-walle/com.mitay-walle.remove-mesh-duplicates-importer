@@ -1,0 +1,20 @@
+{
+  "name": "com.mitay-walle.fbx-mesh-import-tool",
+  "version": "1.0.0",
+  "displayName": "FBX Mesh Import Tool",
+  "description": "Editor-only Unity package that reuses identical or vertex-rotated FBX meshes during import and provides per-object processing rules.",
+  "unity": "2021.3",
+  "keywords": [
+    "fbx",
+    "mesh",
+    "model-importer",
+    "editor"
+  ],
+  "homepage": "https://github.com/mitay-walle/com.mitay-walle.fbx-mesh-import-tool",
+  "license": "MIT",
+  "author": {
+    "name": "mitay-walle",
+    "email": "mitay-walle91@mail.ru",
+    "url": "https://github.com/mitay-walle"
+  }
+}
