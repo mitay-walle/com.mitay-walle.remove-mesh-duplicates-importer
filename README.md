@@ -48,6 +48,10 @@ https://github.com/mitay-walle/com.mitay-walle.remove-mesh-duplicates-importer.g
 
 Or add the package through **Window > Package Manager > + > Add package from git URL**.
 
+## Samples
+
+The package includes a `100 Identical Cubes` sample with one FBX containing 128 identical cube meshes in different positions, rotations, scales, and materials. Import it from the package sample list to test mesh reuse.
+
 ### Usage
 
 1. Select an FBX model in the Project window.
