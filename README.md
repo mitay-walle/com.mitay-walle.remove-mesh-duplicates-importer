@@ -1,7 +1,4 @@
 # Remove Mesh Duplicates Importer
-
-## Summary
-
 `Remove Mesh Duplicates Importer` removes identical meshes from a model and replaces them with one original to save disk space (build size) and runtime RAM.
 
 By default, Unity can import repeated objects from one FBX as separate mesh assets. In environment scenes, this is common for baked vegetation, props, and other objects placed in a DCC package. The resulting duplicate meshes increase the size of the FBX on disk and the amount of mesh data kept in memory.
