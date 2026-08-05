@@ -5,6 +5,8 @@
 
 ![Original and deduplicated sample size comparison](Documentation~/Images/identical-cubes-size-comparison.png)
 
+![100 Identical Cubes sample demo](Documentation~/Images/100-identical-cubes-demo.gif)
+
 By default, Unity imports repeated objects from one FBX only as separate Mesh assets. In environment scenes, it is common to place many repeated meshes (vegetation, props, etc.) in a DCC package. The resulting duplicate meshes increase the size of the build on disk and the amount of mesh data kept in memory.
 
 This package analyzes meshes during model import and reuses one mesh asset whenever the imported geometry is equivalent.
@@ -52,7 +54,6 @@ https://github.com/mitay-walle/com.mitay-walle.remove-mesh-duplicates-importer.g
 
 The package includes a `100 Identical Cubes` sample with original and deduplicated FBX variants containing the same 128 identical cube meshes in different positions, rotations, scales, and materials. Install it from Unity Package Manager to test mesh reuse.
 
-![100 Identical Cubes sample demo](Documentation~/Images/100-identical-cubes-demo.gif)
 
 ## Usage
 
