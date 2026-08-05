@@ -1,6 +1,8 @@
 # Remove Mesh Duplicates Importer
 `Remove Mesh Duplicates Importer` removes identical meshes from a model and replaces them with one original to save disk space (build size) and runtime RAM.
 
+![Original and deduplicated sample size comparison](Documentation~/Images/identical-cubes-size-comparison.png)
+
 By default, Unity imports repeated objects from one FBX only as separate Mesh assets. In environment scenes, it is common to place many repeated meshes (vegetation, props, etc.) in a DCC package. The resulting duplicate meshes increase the size of the build on disk and the amount of mesh data kept in memory.
 
 This package analyzes meshes during model import and reuses one mesh asset whenever the imported geometry is equivalent.
@@ -27,7 +29,7 @@ Actual savings depend on the source asset and importer settings. In two environm
 | --- | ---: | ---: |
 | Tokyo | 32 MB | 10 MB |
 | Nur_GP | 168 MB | 115 MB |
-
+| 100 Cubes | 1.3 MB | 0.7 MB |
 These figures are examples, not guaranteed compression ratios.
 
 For a convenient before/after comparison inside Unity, install [Folder Size Window](https://github.com/mitay-walle/com.mitaywalle.folder-size-window).
@@ -47,8 +49,6 @@ https://github.com/mitay-walle/com.mitay-walle.remove-mesh-duplicates-importer.g
 ## Samples
 
 The package includes a `100 Identical Cubes` sample with original and deduplicated FBX variants containing the same 128 identical cube meshes in different positions, rotations, scales, and materials. Install it from Unity Package Manager to test mesh reuse.
-
-![Original and deduplicated sample size comparison](Documentation~/Images/identical-cubes-size-comparison.png)
 
 ## Usage
 
