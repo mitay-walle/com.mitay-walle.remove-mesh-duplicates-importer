@@ -31,9 +31,9 @@ Actual savings depend on the source asset and importer settings. In two environm
 
 | Asset | Before | After |
 | --- | ---: | ---: |
-| Tokyo | 32 MB | 10 MB |
-| Nur_GP | 168 MB | 115 MB |
-| 100 Cubes | 1.3 MB | 0.7 MB |
+| Tokyo.fbx | 32 MB | 10 MB |
+| Nur_GP.fbx | 168 MB | 115 MB |
+| 100 Cubes.fbx | 1.3 MB | 0.7 MB |
 These figures are examples, not guaranteed compression ratios.
 
 For a convenient before/after comparison inside Unity, install [Folder Size Window](https://github.com/mitay-walle/com.mitaywalle.folder-size-window).
