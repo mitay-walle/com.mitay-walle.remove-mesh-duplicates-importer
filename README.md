@@ -42,6 +42,10 @@ Or add the package through **Window > Package Manager > + > Add package from git
 https://github.com/mitay-walle/com.mitay-walle.remove-mesh-duplicates-importer.git
 ```
 
+## Samples
+
+The package includes a `100 Identical Cubes` sample with one FBX containing 128 identical cube meshes in different positions, rotations, scales, and materials. Install it from Unity Package Manager to test mesh reuse.
+
 ## Usage
 
 1. Select an model in the Project window.

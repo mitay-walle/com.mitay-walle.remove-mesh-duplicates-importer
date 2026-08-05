@@ -9,7 +9,7 @@ namespace Core
 {
     public sealed class FbxMeshImportWindow : EditorWindow
     {
-        private const string MenuPath = "Tools/GTR/Remove Mesh Duplicates Importer";
+
         private const string SettingsPrefix = "GTR_FBX_MESH_IMPORT:";
         private UnityEngine.Object _model;
         private bool _reuseIdenticalMeshes = true;
@@ -21,11 +21,7 @@ namespace Core
         [SerializeField] private TreeViewState<int> _objectTreeViewState;
         private FbxMeshObjectTreeView _objectTreeView;
 
-        [MenuItem(MenuPath)]
-        private static void Open()
-        {
-            GetUtilityWindow();
-        }
+
 
         internal static void OpenForAsset(UnityEngine.Object model)
         {
