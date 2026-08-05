@@ -1,9 +1,11 @@
 # Remove Mesh Duplicates Importer
 `Remove Mesh Duplicates Importer` removes identical meshes from a model and replaces them with one original to save disk space (build size) and runtime RAM.
 
-By default, Unity can import repeated objects from one FBX as separate mesh assets. In environment scenes, this is common for baked vegetation, props, and other objects placed in a DCC package. The resulting duplicate meshes increase the size of the FBX on disk and the amount of mesh data kept in memory.
+By default, Unity imports repeated objects from one FBX only as separate Mesh assets. In environment scenes, it is common to place many repeated meshes (vegetation, props, etc.) in a DCC package. The resulting duplicate meshes increase the size of the build on disk and the amount of mesh data kept in memory.
 
-The tool analyzes meshes during model import and reuses one mesh asset whenever the imported geometry is equivalent. It can also recognize equivalent meshes whose vertices were rotated around a different pivot in the 3D package, which is useful when an instance rotation was baked into the mesh data.
+This package analyzes meshes during model import and reuses one mesh asset whenever the imported geometry is equivalent.
+
+In addition, it can recognize equivalent meshes whose vertices were rotated around a different pivot in the 3D package, which is useful when an instance rotation was baked into the mesh.
 
 Processing is opt-in per FBX model. This keeps the importer safe for projects where mesh reuse is not appropriate.
 
@@ -44,28 +46,28 @@ https://github.com/mitay-walle/com.mitay-walle.remove-mesh-duplicates-importer.g
 
 ## Samples
 
-The package includes a `100 Identical Cubes` sample with one FBX containing 128 identical cube meshes in different positions, rotations, scales, and materials. Install it from Unity Package Manager to test mesh reuse.
+The package includes a `100 Identical Cubes` sample with original and deduplicated FBX variants containing the same 128 identical cube meshes in different positions, rotations, scales, and materials. Install it from Unity Package Manager to test mesh reuse.
 
 ![Original and deduplicated sample size comparison](Documentation~/Images/identical-cubes-size-comparison.png)
 
 ## Usage
 
-1. Select an model in the Project window.
-2. press button in the FBX Model Importer inspector header.
+1. Select a model in the Project window.
+2. Press the button in the FBX Model Importer inspector header.
 3. Enable identical mesh reuse and, when appropriate, vertex-rotated mesh reuse.
 4. Use the object list to exclude specific mesh objects from processing.
 5. Enable logging when you need import diagnostics.
 6. Click **Save Settings And Reimport**.
-7. Compare model size by Folder size window, or in builds size
+7. Compare model sizes with Folder Size Window or in the build size report.
 
 The settings are stored per FBX in `ModelImporter.userData`. When rotated mesh reuse is enabled, the tool temporarily applies comparison-friendly importer settings and restores the original values when processing finishes.
 
 ## Requirements
 
-- Unity 2021.3 or newer requirement
+- Unity 2021.3 or newer
 - Tested with 6000.3.7f1
 
 ## Known Issues
 
-- Unity display the warning `Importer inconsistent result` after importing a processed FBX model, because we remove meshes.
-- if duplicate meshes where already used somewhere externaly, yo will lose references. Recover references is out of the scope
+- Unity displays the warning `Importer inconsistent result` after importing a processed FBX model because meshes are removed.
+- If duplicate meshes were already used somewhere externally, you will lose those references. Recovering references is out of scope.
