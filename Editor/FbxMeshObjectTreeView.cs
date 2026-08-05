@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Core
 {
-    internal sealed class FbxMeshObjectTreeView : TreeView
+    internal sealed class FbxMeshObjectTreeView : TreeView<int>
     {
         private readonly List<FbxMeshObjectProcessingRule> _rules = new();
         private readonly Dictionary<int, FbxMeshObjectProcessingRule> _rulesById = new();
@@ -18,7 +18,7 @@ namespace Core
         public float RowHeight => rowHeight;
         public int VisibleRowCount => _visibleRowCount;
 
-        public FbxMeshObjectTreeView(TreeViewState state)
+        public FbxMeshObjectTreeView(TreeViewState<int> state)
             : base(state)
         {
             rowHeight = EditorGUIUtility.singleLineHeight;
@@ -50,11 +50,11 @@ namespace Core
             Reload();
         }
 
-        protected override TreeViewItem BuildRoot()
+        protected override TreeViewItem<int> BuildRoot()
         {
-            TreeViewItem root = new(0, -1, "Root");
-            root.children = new List<TreeViewItem>();
-            List<TreeViewItem> items = new();
+            TreeViewItem<int> root = new(0, -1, "Root");
+            root.children = new List<TreeViewItem<int>>();
+            List<TreeViewItem<int>> items = new();
             HashSet<int> includedRuleIndexes = GetIncludedRuleIndexes();
             _visibleRowCount = includedRuleIndexes.Count;
             _rulesById.Clear();
@@ -215,7 +215,7 @@ namespace Core
             return true;
         }
 
-        private static void SetDescendantFlags(TreeViewItem parent, bool shouldProcess)
+        private static void SetDescendantFlags(TreeViewItem<int> parent, bool shouldProcess)
         {
             if (parent.children == null)
             {
@@ -235,7 +235,7 @@ namespace Core
             }
         }
 
-        private static bool HasMixedDescendantFlags(TreeViewItem parent)
+        private static bool HasMixedDescendantFlags(TreeViewItem<int> parent)
         {
             if (parent.children == null || parent.children.Count == 0)
             {
@@ -271,7 +271,7 @@ namespace Core
         }
     }
 
-    internal sealed class FbxMeshObjectTreeViewItem : TreeViewItem
+    internal sealed class FbxMeshObjectTreeViewItem : TreeViewItem<int>
     {
         public readonly FbxMeshObjectProcessingRule Rule;
 

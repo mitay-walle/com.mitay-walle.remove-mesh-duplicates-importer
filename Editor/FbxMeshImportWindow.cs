@@ -18,7 +18,7 @@ namespace Core
         private List<FbxMeshObjectProcessingRule> _objectProcessingRules = new();
         private string _searchText = string.Empty;
         private Vector2 _scrollPosition;
-        [SerializeField] private TreeViewState _objectTreeViewState;
+        [SerializeField] private TreeViewState<int> _objectTreeViewState;
         private FbxMeshObjectTreeView _objectTreeView;
 
         [MenuItem(MenuPath)]
@@ -56,7 +56,7 @@ namespace Core
 
         private void OnEnable()
         {
-            _objectTreeViewState ??= new TreeViewState();
+            _objectTreeViewState ??= new TreeViewState<int>();
             _objectTreeView = new FbxMeshObjectTreeView(_objectTreeViewState);
             _objectTreeView.SetSearchText(_searchText);
             if (_model == null && Selection.activeObject != null)
@@ -71,7 +71,7 @@ namespace Core
         {
             if (_objectTreeView == null)
             {
-                _objectTreeViewState ??= new TreeViewState();
+                _objectTreeViewState ??= new TreeViewState<int>();
                 _objectTreeView = new FbxMeshObjectTreeView(_objectTreeViewState);
                 _objectTreeView.SetRules(_objectProcessingRules);
             }
