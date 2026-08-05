@@ -1,5 +1,5 @@
 # Remove Mesh Duplicates Importer
-`Remove Mesh Duplicates Importer` removes identical meshes from a model and replaces them with one original to save disk space (build size) and runtime RAM.
+Unity UPM-package that removes identical meshes from a model and replaces them with one original to save disk space (build size) and runtime RAM.
 
 ![Original and deduplicated cube meshes](Documentation~/Images/identical-cubes-before-after.png)
 
