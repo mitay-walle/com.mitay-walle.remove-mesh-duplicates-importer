@@ -64,6 +64,10 @@ The settings are stored per FBX in `ModelImporter.userData`. When rotated mesh r
 - Unity 2021.3 or newer.
 - The Unity Model Importer module included with the Editor.
 
+## Known Issues
+
+- Unity may display the warning `Importer inconsistent result` after importing a processed FBX model.
+
 ## Documentation screenshots
 
 The screenshots above show the FBX importer integration, the object-processing rules window, and the kind of size comparison this tool is intended to improve.
