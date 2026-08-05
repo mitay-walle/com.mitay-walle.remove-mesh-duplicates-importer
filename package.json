@@ -1,7 +1,7 @@
 {
-  "name": "com.mitay-walle.fbx-mesh-import-tool",
+  "name": "com.mitay-walle.remove-mesh-duplicates-importer",
   "version": "1.0.0",
-  "displayName": "FBX Mesh Import Tool",
+  "displayName": "Remove Mesh Duplicates Importer",
   "description": "Editor-only Unity package that reuses identical or vertex-rotated FBX meshes during import and provides per-object processing rules.",
   "unity": "2021.3",
   "keywords": [
@@ -10,7 +10,7 @@
     "model-importer",
     "editor"
   ],
-  "homepage": "https://github.com/mitay-walle/com.mitay-walle.fbx-mesh-import-tool",
+  "homepage": "https://github.com/mitay-walle/com.mitay-walle.remove-mesh-duplicates-importer",
   "license": "MIT",
   "author": {
     "name": "mitay-walle",

@@ -9,7 +9,7 @@ namespace Core
 {
     public sealed class FbxMeshImportWindow : EditorWindow
     {
-        private const string MenuPath = "Tools/GTR/FBX Mesh Import Tool";
+        private const string MenuPath = "Tools/GTR/Remove Mesh Duplicates Importer";
         private const string SettingsPrefix = "GTR_FBX_MESH_IMPORT:";
         private UnityEngine.Object _model;
         private bool _reuseIdenticalMeshes = true;
@@ -48,7 +48,7 @@ namespace Core
             }
 
             FbxMeshImportWindow window = CreateInstance<FbxMeshImportWindow>();
-            window.titleContent = new GUIContent("FBX Mesh Import");
+            window.titleContent = new GUIContent("Remove Mesh Duplicates Importer");
             window.minSize = new Vector2(360f, 260f);
             window.ShowUtility();
             return window;
@@ -250,7 +250,7 @@ namespace Core
 
             stopwatch.Stop();
             if (_enableLogging)
-                UnityEngine.Debug.Log($"[FBX Mesh Import] Object list processing took {stopwatch.Elapsed.TotalMilliseconds:0} ms.");
+                UnityEngine.Debug.Log($"[Remove Mesh Duplicates] Object list processing took {stopwatch.Elapsed.TotalMilliseconds:0} ms.");
 
             _objectTreeView?.SetRules(_objectProcessingRules);
             _objectTreeView?.SetSearchText(_searchText);

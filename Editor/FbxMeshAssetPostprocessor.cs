@@ -162,12 +162,12 @@ namespace Core
 
             foreach (Mesh duplicateMesh in duplicateMeshes)
             {
-                Log($"[FBX Mesh Import] DELETE: unused Mesh '{duplicateMesh.name}' from '{assetPath}'.");
+                Log($"[Remove Mesh Duplicates] DELETE: unused Mesh '{duplicateMesh.name}' from '{assetPath}'.");
                 UnityEngine.Object.DestroyImmediate(duplicateMesh);
             }
 
             stopwatch.Stop();
-            Log($"[FBX Mesh Import] Mesh reuse processing took {stopwatch.Elapsed.TotalMilliseconds:0} ms.");
+            Log($"[Remove Mesh Duplicates] Mesh reuse processing took {stopwatch.Elapsed.TotalMilliseconds:0} ms.");
         }
 
         private static Mesh FindOrAdd(Mesh mesh, List<Mesh> uniqueMeshes,
@@ -191,7 +191,7 @@ namespace Core
                 if (MeshContentEquals(mesh, candidates[i]))
                 {
                     duplicateMeshes.Add(mesh);
-                    Log($"[FBX Mesh Import] MATCH: '{mesh.name}' reuses '{candidates[i].name}' in '{AssetDatabase.GetAssetPath(mesh)}'.");
+                    Log($"[Remove Mesh Duplicates] MATCH: '{mesh.name}' reuses '{candidates[i].name}' in '{AssetDatabase.GetAssetPath(mesh)}'.");
                     return candidates[i];
                 }
             }
@@ -199,11 +199,11 @@ namespace Core
             if (logUnique && EnableLogging && candidates.Count > 0)
             {
                 Mesh candidate = candidates[0];
-                Log($"[FBX Mesh Import] UNIQUE: '{mesh.name}' - {GetMeshDifferenceReason(mesh, candidate)} (against '{candidate.name}').");
+                Log($"[Remove Mesh Duplicates] UNIQUE: '{mesh.name}' - {GetMeshDifferenceReason(mesh, candidate)} (against '{candidate.name}').");
             }
             else if (logUnique)
             {
-                Log($"[FBX Mesh Import] UNIQUE: '{mesh.name}' - no matching signature.");
+                Log($"[Remove Mesh Duplicates] UNIQUE: '{mesh.name}' - no matching signature.");
             }
             uniqueMeshes.Add(mesh);
             candidates.Add(mesh);
@@ -246,14 +246,14 @@ namespace Core
                                                    out string rejectionReason))
                         {
                             if (!string.IsNullOrEmpty(rejectionReason))
-                                Log($"[FBX Mesh Import] ROTATED REJECT: '{candidate.Mesh.name}' - {rejectionReason} (against '{representative.Mesh.name}').");
+                                Log($"[Remove Mesh Duplicates] ROTATED REJECT: '{candidate.Mesh.name}' - {rejectionReason} (against '{representative.Mesh.name}').");
                             continue;
                         }
 
                         candidate.Assign(representative.Mesh);
                         candidate.Transform.localRotation *= rotation;
                         duplicateMeshes.Add(candidate.Mesh);
-                        Log($"[FBX Mesh Import] ROTATED MATCH: '{candidate.Mesh.name}' reuses '{representative.Mesh.name}' with rotation {rotation.eulerAngles} in '{assetPath}'.");
+                        Log($"[Remove Mesh Duplicates] ROTATED MATCH: '{candidate.Mesh.name}' reuses '{representative.Mesh.name}' with rotation {rotation.eulerAngles} in '{assetPath}'.");
                         matched = true;
                         break;
                     }
@@ -889,7 +889,7 @@ namespace Core
 
         private static void LogMismatch(Mesh first, Mesh second, string reason)
         {
-            Log($"[FBX Mesh Import] DIFFERENT: '{first.name}' vs '{second.name}' - {reason}.");
+            Log($"[Remove Mesh Duplicates] DIFFERENT: '{first.name}' vs '{second.name}' - {reason}.");
         }
 
         private static void Log(string message)

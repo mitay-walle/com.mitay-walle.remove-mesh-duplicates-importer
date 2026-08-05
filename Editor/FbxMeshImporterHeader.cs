@@ -27,7 +27,7 @@ namespace Core
 
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            GUIContent icon = EditorGUIUtility.IconContent("_Popup", "FBX Mesh Import Settings");
+            GUIContent icon = EditorGUIUtility.IconContent("_Popup", "Remove Mesh Duplicates Settings");
             if (GUILayout.Button(icon, EditorStyles.iconButton, GUILayout.Width(22f), GUILayout.Height(18f)))
             {
                 FbxMeshImportWindow.OpenForAsset(editor.target);
