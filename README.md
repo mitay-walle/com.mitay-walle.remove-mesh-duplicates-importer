@@ -46,6 +46,8 @@ https://github.com/mitay-walle/com.mitay-walle.remove-mesh-duplicates-importer.g
 
 The package includes a `100 Identical Cubes` sample with one FBX containing 128 identical cube meshes in different positions, rotations, scales, and materials. Install it from Unity Package Manager to test mesh reuse.
 
+![Original and deduplicated sample size comparison](Documentation~/Images/identical-cubes-size-comparison.png)
+
 ## Usage
 
 1. Select an model in the Project window.

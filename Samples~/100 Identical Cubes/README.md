@@ -1,5 +1,8 @@
-# 100 Identical Cubes
+# 100 Cubes: Original and Deduplicated
 
-`RemoveMeshDuplicates_100_Identical_Cubes.fbx` contains 128 cubes in one FBX file.
+This sample contains two FBX variants with the same 128 identical cubes:
 
-Every cube has its own identical cube mesh data, while position, rotation, scale, and material vary between objects. Import this sample with mesh reuse enabled to inspect the duplicate-mesh workflow.
+- `100_Cubes_original.fbx` keeps the original mesh data.
+- `100_Cubes_deduplicated.fbx` enables identical and vertex-rotated mesh reuse through its importer settings.
+
+The cubes use different positions, rotations, scales, and materials. Compare both variants with [Folder Size Window](https://github.com/mitay-walle/com.mitaywalle.folder-size-window) to see the disk-space and RAM impact.
