@@ -4,9 +4,19 @@ using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
+#if UNITY_6000_2_OR_NEWER
+using FbxMeshTreeView = UnityEditor.IMGUI.Controls.TreeView<int>;
+using FbxMeshTreeViewItem = UnityEditor.IMGUI.Controls.TreeViewItem<int>;
+using FbxMeshTreeViewState = UnityEditor.IMGUI.Controls.TreeViewState<int>;
+#else
+using FbxMeshTreeView = UnityEditor.IMGUI.Controls.TreeView;
+using FbxMeshTreeViewItem = UnityEditor.IMGUI.Controls.TreeViewItem;
+using FbxMeshTreeViewState = UnityEditor.IMGUI.Controls.TreeViewState;
+#endif
+
 namespace Core
 {
-    internal sealed class FbxMeshObjectTreeView : TreeView<int>
+    internal sealed class FbxMeshObjectTreeView : FbxMeshTreeView
     {
         private readonly List<FbxMeshObjectProcessingRule> _rules = new();
         private readonly Dictionary<int, FbxMeshObjectProcessingRule> _rulesById = new();
@@ -18,7 +28,7 @@ namespace Core
         public float RowHeight => rowHeight;
         public int VisibleRowCount => _visibleRowCount;
 
-        public FbxMeshObjectTreeView(TreeViewState<int> state)
+        public FbxMeshObjectTreeView(FbxMeshTreeViewState state)
             : base(state)
         {
             rowHeight = EditorGUIUtility.singleLineHeight;
@@ -50,11 +60,11 @@ namespace Core
             Reload();
         }
 
-        protected override TreeViewItem<int> BuildRoot()
+        protected override FbxMeshTreeViewItem BuildRoot()
         {
-            TreeViewItem<int> root = new(0, -1, "Root");
-            root.children = new List<TreeViewItem<int>>();
-            List<TreeViewItem<int>> items = new();
+            FbxMeshTreeViewItem root = new(0, -1, "Root");
+            root.children = new List<FbxMeshTreeViewItem>();
+            List<FbxMeshTreeViewItem> items = new();
             HashSet<int> includedRuleIndexes = GetIncludedRuleIndexes();
             _visibleRowCount = includedRuleIndexes.Count;
             _rulesById.Clear();
@@ -79,7 +89,11 @@ namespace Core
             return root;
         }
 
-        protected override void RowGUI(RowGUIArgs args)
+#if UNITY_6000_2_OR_NEWER
+        protected override void RowGUI(UnityEditor.IMGUI.Controls.TreeView<int>.RowGUIArgs args)
+#else
+        protected override void RowGUI(UnityEditor.IMGUI.Controls.TreeView.RowGUIArgs args)
+#endif
         {
             FbxMeshObjectProcessingRule rule = ((FbxMeshObjectTreeViewItem)args.item).Rule;
             if (rule == null)
@@ -215,7 +229,7 @@ namespace Core
             return true;
         }
 
-        private static void SetDescendantFlags(TreeViewItem<int> parent, bool shouldProcess)
+        private static void SetDescendantFlags(FbxMeshTreeViewItem parent, bool shouldProcess)
         {
             if (parent.children == null)
             {
@@ -235,7 +249,7 @@ namespace Core
             }
         }
 
-        private static bool HasMixedDescendantFlags(TreeViewItem<int> parent)
+        private static bool HasMixedDescendantFlags(FbxMeshTreeViewItem parent)
         {
             if (parent.children == null || parent.children.Count == 0)
             {
@@ -271,7 +285,7 @@ namespace Core
         }
     }
 
-    internal sealed class FbxMeshObjectTreeViewItem : TreeViewItem<int>
+    internal sealed class FbxMeshObjectTreeViewItem : FbxMeshTreeViewItem
     {
         public readonly FbxMeshObjectProcessingRule Rule;
 

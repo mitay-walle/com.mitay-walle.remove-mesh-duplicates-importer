@@ -5,6 +5,12 @@ using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
+#if UNITY_6000_2_OR_NEWER
+using FbxMeshTreeViewState = UnityEditor.IMGUI.Controls.TreeViewState<int>;
+#else
+using FbxMeshTreeViewState = UnityEditor.IMGUI.Controls.TreeViewState;
+#endif
+
 namespace Core
 {
     public sealed class FbxMeshImportWindow : EditorWindow
@@ -17,7 +23,7 @@ namespace Core
         private List<FbxMeshObjectProcessingRule> _objectProcessingRules = new();
         private string _searchText = string.Empty;
         private Vector2 _scrollPosition;
-        [SerializeField] private TreeViewState<int> _objectTreeViewState;
+        [SerializeField] private FbxMeshTreeViewState _objectTreeViewState;
         private FbxMeshObjectTreeView _objectTreeView;
 
         internal static void OpenForAsset(UnityEngine.Object model)
@@ -49,7 +55,7 @@ namespace Core
 
         private void OnEnable()
         {
-            _objectTreeViewState ??= new TreeViewState<int>();
+            _objectTreeViewState ??= new FbxMeshTreeViewState();
             _objectTreeView = new FbxMeshObjectTreeView(_objectTreeViewState);
             _objectTreeView.SetSearchText(_searchText);
             if (_model == null && Selection.activeObject != null)
@@ -64,7 +70,7 @@ namespace Core
         {
             if (_objectTreeView == null)
             {
-                _objectTreeViewState ??= new TreeViewState<int>();
+                _objectTreeViewState ??= new FbxMeshTreeViewState();
                 _objectTreeView = new FbxMeshObjectTreeView(_objectTreeViewState);
                 _objectTreeView.SetRules(_objectProcessingRules);
             }
