@@ -71,8 +71,8 @@ The settings are stored per FBX in `ModelImporter.userData`. When rotated mesh r
 
 ## Requirements
 
-- Unity 2021.3 or newer
-- Tested with 6000.3.7f1
+- Unity 2022.3 supported
+- Unity 6.0 + supported
 
 ## Known Issues
 
