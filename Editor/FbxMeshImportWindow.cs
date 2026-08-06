@@ -9,7 +9,6 @@ namespace Core
 {
     public sealed class FbxMeshImportWindow : EditorWindow
     {
-
         private const string SettingsPrefix = "GTR_FBX_MESH_IMPORT:";
         private UnityEngine.Object _model;
         private bool _reuseIdenticalMeshes = true;
@@ -72,7 +71,7 @@ namespace Core
 
             UnityEngine.Object previousModel = _model;
             _model = EditorGUILayout.ObjectField(new GUIContent("FBX Model", "FBX asset whose import settings will be changed."),
-                                                 _model, typeof(GameObject), false);
+                _model, typeof(GameObject), false);
             if (previousModel != _model)
             {
                 LoadSettings();
@@ -81,7 +80,7 @@ namespace Core
             using (new EditorGUI.DisabledScope(!IsModelSelected()))
             {
                 if (GUILayout.Button(new GUIContent("Save Settings And Reimport",
-                                                    "Store these settings in the FBX importer and reimport the model.")))
+                        "Store these settings in the FBX importer and reimport the model.")))
                 {
                     SaveSettingsAndReimport();
                 }
@@ -102,7 +101,7 @@ namespace Core
 
             _reuseVertexRotatedIdenticalMeshes = EditorGUILayout.Toggle(
                 new GUIContent("Reuse Vertex-Rotated Meshes",
-                               "Compare meshes whose vertex data is rotated. Does not modify object pivots or transforms."),
+                    "Compare meshes whose vertex data is rotated. Does not modify object pivots or transforms."),
                 _reuseVertexRotatedIdenticalMeshes);
 
             _enableLogging = EditorGUILayout.Toggle(
@@ -120,7 +119,8 @@ namespace Core
 
         private bool IsModelSelected()
         {
-            return _model != null && AssetDatabase.GetAssetPath(_model).EndsWith(".fbx", StringComparison.OrdinalIgnoreCase);
+            string assetPath = AssetDatabase.GetAssetPath(_model);
+            return _model != null && AssetImporter.GetAtPath(assetPath) as ModelImporter;
         }
 
         private void SaveSettingsAndReimport()
@@ -232,7 +232,7 @@ namespace Core
 
                 string objectPath = FbxMeshAssetPostprocessor.GetObjectPath(transform, model.transform);
                 bool shouldProcess = !savedFlagsByPath.TryGetValue(objectPath, out bool savedFlag) &&
-                                     !savedFlagsByName.TryGetValue(transform.name, out savedFlag) || savedFlag;
+                    !savedFlagsByName.TryGetValue(transform.name, out savedFlag) || savedFlag;
                 _objectProcessingRules.Add(new FbxMeshObjectProcessingRule
                 {
                     ObjectName = transform.name,
@@ -258,7 +258,7 @@ namespace Core
         }
 
         private static int GetMeshHierarchyDepth(Transform transform, Transform modelRoot,
-                                                 HashSet<Transform> meshObjects)
+            HashSet<Transform> meshObjects)
         {
             int depth = 0;
             while (transform != modelRoot && transform.parent != null)
@@ -270,7 +270,6 @@ namespace Core
 
             return depth;
         }
-
 
         internal static bool TryReadConfiguration(ModelImporter importer, out FbxMeshImportConfiguration configuration)
         {

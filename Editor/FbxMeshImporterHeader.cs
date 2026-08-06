@@ -19,8 +19,7 @@ namespace Core
                 return;
             }
 
-            string assetPath = AssetDatabase.GetAssetPath(editor.target);
-            if (!assetPath.EndsWith(".fbx", StringComparison.OrdinalIgnoreCase))
+            if (editor.target as ModelImporter == null)
             {
                 return;
             }
