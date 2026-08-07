@@ -11,7 +11,7 @@ Unity UPM-package that removes identical meshes from a model and replaces them w
 
 By default, Unity imports repeated objects from one FBX only as separate Mesh assets. In environment scenes, it is common to place many repeated meshes (vegetation, props, etc.) in a DCC package. The resulting duplicate meshes increase the size of the build on disk and the amount of mesh data kept in memory. 
 
-Note: [Blender solve this with link data](https://discussions.unity.com/t/why-model-importer-not-support-removing-identical-meshes-i-write-this-options-for-everyone/1733139/2)
+Note: [Blender solve this with link data. .fbx export also works!](https://discussions.unity.com/t/why-model-importer-not-support-removing-identical-meshes-i-write-this-options-for-everyone/1733139/2)
 
 ## Solution
 
